@@ -11,32 +11,40 @@ class DirectedGraph extends React.Component {
     super(props);
     this.state = {
       graphNodes: this.props.graphNodesAndEdges ?? {},
+      compiledNodes: [
+        { data: { id: "A", label: "A: " + '0.458' }, position: { x: 200, y: 200 } },
+        { data: { id: "B", label: "B: " + '0.083' }, position: { x: 500, y: 200 } },
+        { data: { id: "C", label: "C: " + '0.208' }, position: { x: 500, y: 400 } },
+        { data: { id: "D", label: "D: " + '0' }, position: { x: 200, y: 400 } },
+        { data: { source: "B", target: "C", label: "Edge from Node1 to Node2" } },
+        { data: { source: "B", target: "A", label: "Edge from Node1 to Node2" } },
+        { data: { source: "C", target: "A", label: "Edge from Node1 to Node2" } },
+        { data: { source: "D", target: "C", label: "Edge from Node1 to Node2" } },
+        { data: { source: "D", target: "B", label: "Edge from Node1 to Node2" } },
+        { data: { source: "D", target: "A", label: "Edge from Node1 to Node2" } },
+      ]
     }
   }
 
   componentDidMount() {
-    console.log('EDGE NODES ++', this.state.graphNodes);
+    let nodess = [];
+    this.state.graphNodes.nodes?.map((res, index) => {
+      nodess.push({ data: { id: res.name, label: res.name + " " + res.PageRank.toPrecision(3) }, position: { x: 200, y: 200 } })
+    })
+
+    for(let i = 0; i < this.state.graphNodes.nodesEdges.length; i++) {
+      nodess.push({ data: { source: this.state.graphNodes.nodesEdges[i].connector[0], target: this.state.graphNodes.nodesEdges[i].connector[1], label: "Edge from Node1 to Node2" } })
+    }
+
+    this.setState({
+      compiledNodes: nodess
+    })
+
   }
 
   render(){
-    // const layout = { name: 'cose-bilkent' };
-    const elements = [
-      {
-        data: { id: "one", label: 'A' },
-        position: { x: 200, y: 200 },
-      },
-      { data: { id: "two", label: "B" }, position: { x: 500, y: 200 } },
-      {
-        data: {
-          source: "one",
-          target: "two",
-          label: "Edge from Node1 to Node2",
-        },
-      }
-    ];
-
     return <CytoscapeComponent
-    elements={elements}
+    elements={this.state.compiledNodes}
     stylesheet={[
       {
         selector: 'node',
@@ -44,8 +52,8 @@ class DirectedGraph extends React.Component {
           'background-color': '#282',
           'label': 'data(label)',
           'width': 100,
-          'height': 100
-          //opacity: 0.3
+          'height': 100,
+          //'opacity': 0.3
         }
       },
       {
