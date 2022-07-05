@@ -10,19 +10,29 @@ class DirectedGraph extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      graphNodes: this.props.graphNodes ?? {},
-      graphEdges: this.props.graphEdges ?? {}
+      graphNodes: this.props.graphNodesAndEdges ?? {},
     }
+  }
 
-    console.log('EDGE NODES', this.state.graphEdges, this.state.graphNodes);
+  componentDidMount() {
+    console.log('EDGE NODES ++', this.state.graphNodes);
   }
 
   render(){
     // const layout = { name: 'cose-bilkent' };
     const elements = [
-      this.state.graphNodes,
+      {
+        data: { id: "one", label: 'A' },
+        position: { x: 200, y: 200 },
+      },
       { data: { id: "two", label: "B" }, position: { x: 500, y: 200 } },
-      this.state.graphEdges
+      {
+        data: {
+          source: "one",
+          target: "two",
+          label: "Edge from Node1 to Node2",
+        },
+      }
     ];
 
     return <CytoscapeComponent
@@ -33,6 +43,8 @@ class DirectedGraph extends React.Component {
         style: {
           'background-color': '#282',
           'label': 'data(label)',
+          'width': 100,
+          'height': 100
           //opacity: 0.3
         }
       },

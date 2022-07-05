@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import DirectedGraph from "../dGraph/dGraph";
 
 class Graph extends React.Component {
@@ -9,33 +9,34 @@ class Graph extends React.Component {
     this.state = {
       Nodes: this.props.nodeArrays,
       Edges: this.props.Edges,
-      pageRanks: [],
+      pageRanks: []
     };
+
+    console.log('Nodessss -- 1', this.state.Nodes);
   }
 
   componentWillMount() {
     this.PageRank();
+    console.log('STATE UPDATED');
   }
-
-  // componentDidMount() {
-  //   console.log(this.state.pageRanks.A);
-  // }
 
   /**
    * Function for refresh nodes, calling this function after adding a new node or edge
    */
-  refresh() {
-    let nl;
-    let el;
-    this.state.Edges.length == undefined
-      ? (el = 0)
-      : (el = this.state.Edges.length);
-    this.state.Nodes.length == undefined
-      ? (nl = 0)
-      : (nl = this.state.Nodes.length);
-    for (let i = 0; i < nl; i++) {
-      this.state.Nodes[i].prob = 1 / nl;
-      for (let j = 0; j < el ?? 1; j++) {
+  refresh = () => {
+    // let nl;
+    // let el;
+    // this.state.Edges.length == undefined
+    //   ? (el = 0)
+    //   : (el = this.state.Edges.length);
+    // this.state.Nodes.length == undefined
+    //   ? (nl = 0)
+    //   : (nl = this.state.Nodes.length);
+    console.log('Nodessss -- 2', this.state.Nodes);
+    console.log('Nodessss -- 2', this.state.Edges);
+    for (let i = 0; i < this.state.Nodes?.length; i++) {
+      this.state.Nodes[i].prob = 1 / this.state.Nodes?.length;
+      for (let j = 0; j < this.state.Edges.length ?? 1; j++) {
         if (this.state.Nodes[i].name == this.state.Edges[j].connector[0]) {
           this.state.Nodes[i].OBLen += 1;
         }
@@ -118,22 +119,13 @@ class Graph extends React.Component {
     return (
       <>
         <h1>Graph</h1>
+        <button onClick={this.refresh}>Refresh Nodes</button>
         <DirectedGraph
-          graphNodes={{
-            data: { id: "one", label: this.state.pageRanks.A.toPrecision(3) },
-            position: { x: 200, y: 200 },
-          }}
-          graphEdges={{
-            data: {
-              source: "one",
-              target: "two",
-              label: "Edge from Node1 to Node2",
-            },
-          }}
+          graphNodesAndEdges={{nodes: this.state.Nodes, nodesEdges: this.state.Edges}}
         />
       </>
     );
   }
 }
 
-export default Graph;
+export default memo(Graph);
