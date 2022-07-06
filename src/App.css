@@ -1,3 +1,7 @@
+html, body, #root, .App, .wrapper {
+  height: 100%;
+}
+
 .circle {
   width: 100px;
   height: 100px;
@@ -11,4 +15,38 @@
 
 h3, h5 {
   margin: 0
+}
+
+.form-wrapper {
+  width: 50%;
+  background: #eee;
+}
+
+.btn-submit {
+  padding: 10px;
+  margin-top: 10px;
+  background: white;
+  color: #000;
+  border: none;
+}
+
+.btn-submit:hover {
+  padding: 10px;
+  margin-top: 10px;
+  background: orange;
+  color: white;
+  border: none;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  width: 300px;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-weight: normal;
 }
