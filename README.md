@@ -19,7 +19,7 @@ We can simplify the PageRank algorithm to describe it as a way for the importanc
   `` PR(A) = PR(B) + PR(C) + PR(D) ``
 
 # Project Structure
-
+NOTE: The folder structure can be improve
 - src
   - Components
     - Directed Graph component (dGraph)
@@ -29,11 +29,33 @@ We can simplify the PageRank algorithm to describe it as a way for the importanc
 
 # Installation
 
-`` clone repo ``
-`` npm i ``
-`` npm start ``
+## `` clone repo ``
+## `` npm i ``
+## `` npm start ``
 
 # Screenshots with description
+
+## Displaying `No Node found` text if node is not created
+<img width="1680" alt="Screenshot 2022-07-07 at 12 23 54 AM" src="https://user-images.githubusercontent.com/23281307/177666443-e49e5221-7b60-4aa8-9853-49b61adb735d.png">
+
+## Added single node
+<img width="1680" alt="Screenshot 2022-07-07 at 12 24 38 AM" src="https://user-images.githubusercontent.com/23281307/177666556-309d6be9-81c3-424c-a322-7d6338883de1.png">
+
+## Added two nodes without edges
+<img width="1680" alt="Screenshot 2022-07-07 at 12 25 08 AM" src="https://user-images.githubusercontent.com/23281307/177666597-bd0b0082-6cd6-4795-8acb-f5cd2023eda3.png">
+
+## After adding edge between two nodes, Edge is basically dependent on outbound links
+<img width="1680" alt="Screenshot 2022-07-07 at 12 25 29 AM" src="https://user-images.githubusercontent.com/23281307/177666645-cf9d55a4-71de-46db-9552-7db03267fa2a.png">
+
+## Form for adding new node
+<img width="405" alt="Screenshot 2022-07-07 at 12 26 10 AM" src="https://user-images.githubusercontent.com/23281307/177666717-687856be-ff26-454d-9bd8-89cfed053dce.png">
+
+## Form for adding Edge between node
+<img width="400" alt="Screenshot 2022-07-07 at 12 26 26 AM" src="https://user-images.githubusercontent.com/23281307/177666775-7c76b033-4d0e-4efd-8742-d11659086a82.png">
+
+## Directed graph
+<img width="984" alt="Screenshot 2022-07-07 at 12 26 47 AM" src="https://user-images.githubusercontent.com/23281307/177666849-a8771461-14ca-4605-833f-f34ff75d21b2.png">
+
 
 
 
