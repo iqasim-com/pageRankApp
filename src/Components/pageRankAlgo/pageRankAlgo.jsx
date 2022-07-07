@@ -1,5 +1,5 @@
 /**
- * Copyright [2022] [semantichealth]
+ * Copyright [2022] [Semantic Health]
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
@@ -48,7 +48,6 @@ class PageRankAlgo extends React.Component {
       this.refresh();
       this.PageRank();
     }, 1000);
-    
   }
 
   /**
@@ -56,7 +55,6 @@ class PageRankAlgo extends React.Component {
    * prob and OBLen
    */
   refresh = () => {
-    console.log(this.state.Nodes);
     for(let i = 0; i < this.state.Nodes?.length; i++) {
       this.state.Nodes[i].OBLen = 0;
       this.state.Nodes[i].PageRank = 0;
