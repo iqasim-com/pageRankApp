@@ -33,6 +33,20 @@ NOTE: The folder structure can be improve
 ## `` npm i ``
 ## `` npm start ``
 
+# Features
+
+- User can add nodes and edges
+- PageRank calculation based on nodes and edges (Outbound links)
+
+# Limitations
+
+- Test cases are not implemented
+- Initial x and y position of node is not set dynamically so all the nodes have the same position initially
+- I can set the color of each node based on percentage but for now its not implemented
+- Node can't be remove, this functionality can be aaded later
+- Global state management is not implemented (I can use Redux for this)
+- 
+
 # Screenshots with description
 
 ## Displaying `No Node found` text if node is not created
